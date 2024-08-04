@@ -30,7 +30,6 @@ header {
     height: 4em;
     margin-right: 1em;
 }
-
 main {
     padding: 2em;
     max-width: 800px;
@@ -118,4 +117,3 @@ button {
 button:hover {
     background-color: #2d4373;
 }
-
