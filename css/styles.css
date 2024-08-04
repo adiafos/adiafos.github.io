@@ -1,6 +1,6 @@
 /* Global Styles */
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f0f2f5;
@@ -14,6 +14,23 @@ header {
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
+.header-container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1em;
+    padding-right: 1em;
+    padding-left: 1em;
+    transition: transform 0.3s ease;
+}
+.header-container:hover {
+    transform: scale(1.05);
+}
+.header-container img {
+    height: 4em;
+    margin-right: 1em;
+}
+
 main {
     padding: 2em;
     max-width: 800px;
@@ -45,12 +62,9 @@ p {
     margin: 1em 0;
     text-align: justify;
 }
-a {
-    color: #3b5998;
-    text-decoration: none;
-}
-a:hover {
-    text-decoration: underline;
+.footer-text {
+    margin: 1em 0;
+    text-align: center;
 }
 ol {
     list-style-type: decimal;
@@ -63,18 +77,20 @@ ul {
 li {
     margin: 0.5em 0;
 }
-button {
-    background-color: #3b5998;
-    color: white;
-    border: none;
-    padding: 0.75em 1.5em;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
+a {
+    color: #29498f;
+    text-decoration: none;
 }
-button:hover {
-    background-color: #2d4373;
+a:hover {
+    text-decoration: underline;
+}
+.container-link {
+    text-decoration: none;
+}
+.privacy-link {
+    color: white;
+    font-weight: bold;
+    text-decoration: underline;
 }
 .app-store-link {
     display: inline-block;
@@ -89,3 +105,17 @@ button:hover {
 .app-store-link:hover {
     background-color: #005bb5;
 }
+button {
+    background-color: #3b5998;
+    color: white;
+    border: none;
+    padding: 0.75em 1.5em;
+    font-size: 1em;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+button:hover {
+    background-color: #2d4373;
+}
+
