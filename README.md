@@ -17,6 +17,6 @@ Aquí puedes encontrar una lista de mis proyectos destacados:
 
 Si deseas contactarme, puedes hacerlo a través de los siguientes medios:
 
-- Correo electrónico: [alvarofossaty@gmail.com](mailto:alvarofossaty@gmail.com)
+- Correo electrónico: [cinchas06.principios@icloud.com](mailto:cinchas06.principios@icloud.com)
 
 ¡Gracias por visitar mi página personal!
