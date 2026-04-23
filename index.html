@@ -199,9 +199,19 @@
         .social-links a {
             color: var(--text-muted);
             transition: color 0.2s;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
         }
 
         .social-links a:hover { color: #fff; }
+
+        .social-link-item i {
+            width: 20px;
+            height: 20px;
+        }
 
         /* Animations */
         @keyframes fadeInDown {
@@ -289,9 +299,14 @@
         <footer>
             <p>© 2026 Adiafos. Diseño Premium & Minimalista.</p>
             <div class="social-links">
-                <a href="https://github.com/adiafos"><i data-lucide="github"></i></a>
-                <!-- El mail se puede poner directamente aquí o usar un script si prefieres ocultarlo -->
-                <a href="mailto:beluga-senior0b@icloud.com"><i data-lucide="mail"></i></a>
+                <a href="https://github.com/adiafos" class="social-link-item">
+                    <i data-lucide="github"></i>
+                    <span>adiafos</span>
+                </a>
+                <a href="mailto:beluga-senior0b@icloud.com" class="social-link-item">
+                    <i data-lucide="mail"></i>
+                    <span>Email</span>
+                </a>
             </div>
         </footer>
     </div>
