@@ -22,7 +22,7 @@
             --text-muted: #94a3b8;
             --accent: #10b981;
             --glass: rgba(30, 41, 59, 0.7);
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.15);
         }
 
         * {
@@ -49,6 +49,84 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 2rem;
+        }
+
+        /* Custom Language Selector */
+        .lang-selector {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+        }
+
+        .lang-btn {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            color: var(--text);
+            padding: 0.6rem 1.2rem;
+            border-radius: 9999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .lang-btn:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            min-width: 120px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .lang-dropdown.active {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .lang-option {
+            padding: 0.75rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .lang-option:hover {
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text);
+        }
+
+        .lang-option.selected {
+            color: var(--primary);
+            font-weight: 700;
+            background: rgba(99, 102, 241, 0.05);
         }
 
         /* Background Blobs */
@@ -222,6 +300,7 @@
         @media (max-width: 768px) {
             header { padding: 5rem 0 4rem; }
             footer { justify-content: center; text-align: center; }
+            .lang-selector { top: 1rem; right: 1rem; }
         }
     </style>
 </head>
@@ -230,32 +309,48 @@
     <div class="blob blob-1"></div>
     <div class="blob blob-2"></div>
 
+    <div class="lang-selector">
+        <button class="lang-btn" id="langBtn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+            <span id="currentLang">ES</span>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+            <div class="lang-option" data-value="es">Español <span>ES</span></div>
+            <div class="lang-option" data-value="en">English <span>EN</span></div>
+            <div class="lang-option" data-value="fr">Français <span>FR</span></div>
+            <div class="lang-option" data-value="de">Deutsch <span>DE</span></div>
+            <div class="lang-option" data-value="pt">Português <span>PT</span></div>
+            <div class="lang-option" data-value="it">Italiano <span>IT</span></div>
+        </div>
+    </div>
+
     <div class="container">
         <!-- Hero Section -->
         <header>
             <h1 class="hero-title">Adiafos</h1>
-            <p class="hero-subtitle">Desarrollador, creativo y entusiasta de la tecnología. Bienvenido a mi rincón personal.</p>
+            <p class="hero-subtitle" data-i18n="hero-subtitle">Desarrollador, creativo y entusiasta de la tecnología. Bienvenido a mi rincón personal.</p>
         </header>
 
         <!-- Projects Section -->
         <section>
             <div class="section-title">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
-                <h2>Proyectos</h2>
+                <h2 data-i18n="projects-title">Proyectos</h2>
             </div>
             
             <div class="grid">
                 <div class="glass-card">
                     <div>
                         <h3 style="margin-bottom: 0.75rem; font-size: 1.5rem;">Project Alpha</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Un proyecto increíble con enfoque en rendimiento y diseño minimalista.</p>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;" data-i18n="project-alpha-desc">Un proyecto increíble con enfoque en rendimiento y diseño minimalista.</p>
                         <div class="tag-container">
                             <span class="tag">HTML</span>
                             <span class="tag">CSS</span>
                             <span class="tag">JS</span>
                         </div>
                     </div>
-                    <a href="#" class="project-link">Ver Proyecto 
+                    <a href="#" class="project-link">
+                        <span data-i18n="view-project">Ver Proyecto</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                     </a>
                 </div>
@@ -263,13 +358,14 @@
                 <div class="glass-card">
                     <div>
                         <h3 style="margin-bottom: 0.75rem; font-size: 1.5rem;">Project Beta</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Experimentos con animaciones fluidas y micro-interacciones web.</p>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;" data-i18n="project-beta-desc">Experimentos con animaciones fluidas y micro-interacciones web.</p>
                         <div class="tag-container">
                             <span class="tag">UI/UX</span>
                             <span class="tag">Animations</span>
                         </div>
                     </div>
-                    <a href="#" class="project-link">Ver Proyecto 
+                    <a href="#" class="project-link">
+                        <span data-i18n="view-project">Ver Proyecto</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
                     </a>
                 </div>
@@ -280,18 +376,18 @@
         <section class="info-grid">
             <div class="glass-card info-card">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 17 10 11 4 5"></polyline><line x1="12" y1="19" x2="20" y2="19"></line></svg>
-                <h4 style="margin-bottom: 0.5rem;">Clean Code</h4>
-                <p style="font-size: 0.875rem; color: var(--text-muted);">Enfoque en código legible y fácil de mantener.</p>
+                <h4 style="margin-bottom: 0.5rem;" data-i18n="clean-code-title">Clean Code</h4>
+                <p style="font-size: 0.875rem; color: var(--text-muted);" data-i18n="clean-code-desc">Enfoque en código legible y fácil de mantener.</p>
             </div>
             <div class="glass-card info-card">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"></polygon><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                <h4 style="margin-bottom: 0.5rem;">Modern UI</h4>
-                <p style="font-size: 0.875rem; color: var(--text-muted);">Utilizando las últimas tendencias en diseño web.</p>
+                <h4 style="margin-bottom: 0.5rem;" data-i18n="modern-ui-title">Modern UI</h4>
+                <p style="font-size: 0.875rem; color: var(--text-muted);" data-i18n="modern-ui-desc">Utilizando las últimas tendencias en diseño web.</p>
             </div>
             <div class="glass-card info-card">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                <h4 style="margin-bottom: 0.5rem;">Open Source</h4>
-                <p style="font-size: 0.875rem; color: var(--text-muted);">Contribuyendo a la comunidad global.</p>
+                <h4 style="margin-bottom: 0.5rem;" data-i18n="open-source-title">Open Source</h4>
+                <p style="font-size: 0.875rem; color: var(--text-muted);" data-i18n="open-source-desc">Contribuyendo a la comunidad global.</p>
             </div>
         </section>
 
@@ -310,6 +406,138 @@
             </div>
         </footer>
     </div>
+
+    <script>
+        const translations = {
+            es: {
+                "hero-subtitle": "Desarrollador, creativo y entusiasta de la tecnología. Bienvenido a mi rincón personal.",
+                "projects-title": "Proyectos",
+                "project-alpha-desc": "Un proyecto increíble con enfoque en rendimiento y diseño minimalista.",
+                "project-beta-desc": "Experimentos con animaciones fluidas y micro-interacciones web.",
+                "view-project": "Ver Proyecto",
+                "clean-code-title": "Clean Code",
+                "clean-code-desc": "Enfoque en código legible y fácil de mantener.",
+                "modern-ui-title": "Modern UI",
+                "modern-ui-desc": "Utilizando las últimas tendencias en diseño web.",
+                "open-source-title": "Open Source",
+                "open-source-desc": "Contribuyendo a la comunidad global."
+            },
+            en: {
+                "hero-subtitle": "Developer, creative, and tech enthusiast. Welcome to my personal corner.",
+                "projects-title": "Projects",
+                "project-alpha-desc": "An amazing project focused on performance and minimalist design.",
+                "project-beta-desc": "Experiments with fluid animations and web micro-interactions.",
+                "view-project": "View Project",
+                "clean-code-title": "Clean Code",
+                "clean-code-desc": "Focus on readable and maintainable code.",
+                "modern-ui-title": "Modern UI",
+                "modern-ui-desc": "Using the latest trends in web design.",
+                "open-source-title": "Open Source",
+                "open-source-desc": "Contributing to the global community."
+            },
+            fr: {
+                "hero-subtitle": "Développeur, créatif et passionné de technologie. Bienvenue dans mon coin personnel.",
+                "projects-title": "Projets",
+                "project-alpha-desc": "Un projet incroyable axé sur la performance et le design minimaliste.",
+                "project-beta-desc": "Expériences avec des animations fluides et des micro-interactions web.",
+                "view-project": "Voir le Projet",
+                "clean-code-title": "Code Propre",
+                "clean-code-desc": "Focus sur un code lisible et facile à maintenir.",
+                "modern-ui-title": "UI Moderne",
+                "modern-ui-desc": "Utilisation des dernières tendances en design web.",
+                "open-source-title": "Open Source",
+                "open-source-desc": "Contribution à la communauté mondiale."
+            },
+            de: {
+                "hero-subtitle": "Entwickler, Kreativer und Technik-Enthusiast. Willkommen in meiner persönlichen Ecke.",
+                "projects-title": "Projekte",
+                "project-alpha-desc": "Ein erstaunliches Projekt mit Fokus auf Performance und minimalistisches Design.",
+                "project-beta-desc": "Experimente mit flüssigen Animationen und Web-Mikrointeraktionen.",
+                "view-project": "Projekt ansehen",
+                "clean-code-title": "Clean Code",
+                "clean-code-desc": "Fokus auf lesbaren und wartbaren Code.",
+                "modern-ui-title": "Modernes UI",
+                "modern-ui-desc": "Nutzung der neuesten Trends im Webdesign.",
+                "open-source-title": "Open Source",
+                "open-source-desc": "Beitrag zur globalen Gemeinschaft."
+            },
+            pt: {
+                "hero-subtitle": "Desenvolvedor, criativo e entusiasta da tecnologia. Bem-vindo ao meu canto pessoal.",
+                "projects-title": "Projetos",
+                "project-alpha-desc": "Um projeto incrível focado em desempenho e design minimalista.",
+                "project-beta-desc": "Experiências com animações fluidas e micro-interações web.",
+                "view-project": "Ver Projeto",
+                "clean-code-title": "Código Limpo",
+                "clean-code-desc": "Foco em código legível e fácil de manter.",
+                "modern-ui-title": "UI Moderna",
+                "modern-ui-desc": "Utilizando as últimas tendências em web design.",
+                "open-source-title": "Open Source",
+                "open-source-desc": "Contribuindo para a comunidade global."
+            },
+            it: {
+                "hero-subtitle": "Sviluppatore, creativo e appassionato di tecnologia. Benvenuti nel mio angolo personale.",
+                "projects-title": "Progetti",
+                "project-alpha-desc": "Un progetto incredibile focalizzato sulle prestazioni e sul design minimalista.",
+                "project-beta-desc": "Esperimenti con animazioni fluide e micro-interazioni web.",
+                "view-project": "Vedi Progetto",
+                "clean-code-title": "Clean Code",
+                "clean-code-desc": "Focus su codice leggibile e facile da mantenere.",
+                "modern-ui-title": "UI Moderna",
+                "modern-ui-desc": "Utilizzando le ultime tendenze del web design.",
+                "open-source-title": "Open Source",
+                "open-source-desc": "Contribuire alla comunità globale."
+            }
+        };
+
+        const langBtn = document.getElementById('langBtn');
+        const langDropdown = document.getElementById('langDropdown');
+        const currentLangText = document.getElementById('currentLang');
+        const langOptions = document.querySelectorAll('.lang-option');
+
+        function setLanguage(lang) {
+            const dictionary = translations[lang] || translations['en'];
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (dictionary[key]) {
+                    element.textContent = dictionary[key];
+                }
+            });
+            document.documentElement.lang = lang;
+            currentLangText.textContent = lang.toUpperCase();
+            
+            langOptions.forEach(opt => {
+                opt.classList.toggle('selected', opt.dataset.value === lang);
+            });
+            
+            localStorage.setItem('preferredLang', lang);
+            langDropdown.classList.remove('active');
+        }
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            langDropdown.classList.remove('active');
+        });
+
+        langOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                setLanguage(option.dataset.value);
+            });
+        });
+
+        // Auto-detect language
+        function initLanguage() {
+            const savedLang = localStorage.getItem('preferredLang');
+            const browserLang = navigator.language.split('-')[0];
+            const defaultLang = savedLang || (translations[browserLang] ? browserLang : 'en');
+            setLanguage(defaultLang);
+        }
+
+        window.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
 </body>
 
 </html>
