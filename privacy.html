@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="privacy-page-title">Política de Privacidad - Adiafos</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #0f172a;
+            --bg-secondary: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #10b981;
+            --glass: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.15);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .top-nav {
+            padding: 2rem 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            line-height: 1;
+        }
+
+        .back-link:hover {
+            transform: translateX(-5px);
+            color: #818cf8;
+        }
+
+        .lang-selector { position: relative; }
+
+        .lang-btn {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            color: var(--text);
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover { border-color: var(--primary); }
+
+        .lang-dropdown {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            right: 0;
+            background: var(--glass);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1rem;
+            overflow: hidden;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            min-width: 160px;
+            z-index: 1000;
+        }
+
+        .lang-dropdown.active { opacity: 1; visibility: visible; transform: translateY(0); }
+
+        .lang-option {
+            padding: 0.75rem 1.2rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+        }
+
+        .lang-option:hover { background: rgba(255, 255, 255, 0.05); color: var(--text); }
+        .lang-option.selected { color: var(--primary); font-weight: 700; }
+
+        main { padding: 2rem 0 8rem; animation: fadeInUp 0.8s ease-out; }
+
+        h1 { font-size: 3rem; margin-bottom: 0.5rem; background: linear-gradient(to right, #fff, #94a3b8); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        .last-updated { color: var(--text-muted); margin-bottom: 3rem; font-size: 0.9rem; }
+        h2 { color: var(--primary); margin: 3rem 0 1rem; font-size: 1.5rem; }
+        p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 1.05rem; }
+        strong { color: var(--text); }
+        a { color: var(--primary); text-decoration: none; font-weight: 600; }
+        a:hover { color: #818cf8; text-decoration: underline; }
+
+        .blob {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.12;
+        }
+        .blob-1 { background: var(--primary); top: -100px; right: -100px; }
+        .blob-2 { background: var(--accent); bottom: -100px; left: -100px; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) { h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+        <div class="top-nav" style="justify-content: space-between;">
+            <a href="index.html" class="back-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                <span data-i18n="back-home">Volver</span>
+            </a>
+            <div class="lang-selector">
+                <button class="lang-btn" id="langBtn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <span id="currentLang">ES</span>
+                </button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <div class="lang-option" data-value="es">Español <span>ES</span></div>
+                    <div class="lang-option" data-value="en">English <span>EN</span></div>
+                    <div class="lang-option" data-value="fr">Français <span>FR</span></div>
+                    <div class="lang-option" data-value="de">Deutsch <span>DE</span></div>
+                    <div class="lang-option" data-value="pt">Português <span>PT</span></div>
+                    <div class="lang-option" data-value="it">Italiano <span>IT</span></div>
+                </div>
+            </div>
+        </div>
+
+        <main>
+            <h1 data-i18n="privacy-title">Política de Privacidad</h1>
+            <p class="last-updated"><span data-i18n="last-updated-text">Última actualización:</span> <strong data-i18n="date">23 de abril de 2026</strong></p>
+            
+            <h2 data-i18n="section-1-title">1. Transparencia de Datos</h2>
+            <p data-i18n="section-1-content">Mi filosofía es sencilla: tus datos son tuyos. Mis proyectos y aplicaciones no están diseñados para husmear en tu vida privada. Los datos que se generan al usar mis herramientas se procesan localmente en tu propio dispositivo, asegurando que tu privacidad se quede contigo.</p>
+
+            <h2 data-i18n="section-2-title">2. ¿Por qué hay anuncios?</h2>
+            <p data-i18n="section-2-content">Utilizo Google AdMob para mostrar algunos anuncios. Soy un desarrollador independiente y estos anuncios son la pequeña ayuda que me permite mantener las aplicaciones gratuitas y seguir dedicando tiempo a mejorarlas para todos. AdMob puede usar identificadores anónimos de tu dispositivo para mostrarte publicidad que sea relevante para ti.</p>
+
+            <h2 data-i18n="section-3-title">3. Mejorando juntos (Analytics)</h2>
+            <p data-i18n="section-3-content">A veces utilizo herramientas como Firebase para entender qué partes de la app funcionan bien y cuáles necesitan un poco más de cariño. Estos datos analíticos son totalmente anónimos y su único propósito es ayudarme a detectar errores y hacer que tu experiencia sea cada vez más fluida y útil.</p>
+
+            <h2 data-i18n="section-4-title">4. Evolución Constante</h2>
+            <p data-i18n="section-4-content">Al igual que la tecnología, esta política puede cambiar de vez en cuando para adaptarse a nuevas mejoras o normativas. Siempre podrás consultar la versión más reciente aquí mismo.</p>
+
+            <h2 data-i18n="section-5-title">5. Hablemos</h2>
+            <div id="contact-content">
+                <!-- Se llenará vía JS -->
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const translations = {
+            es: {
+                "privacy-page-title": "Política de Privacidad - Adiafos",
+                "privacy-title": "Política de Privacidad",
+                "last-updated-text": "Última actualización:",
+                "date": "23 de abril de 2026",
+                "section-1-title": "1. Transparencia de Datos",
+                "section-1-content": "Mi filosofía es sencilla: tus datos son tuyos. Mis proyectos y aplicaciones no están diseñados para husmear en tu vida privada. Los datos que se generan al usar mis herramientas se procesan localmente en tu propio dispositivo, asegurando que tu privacidad se quede contigo.",
+                "section-2-title": "2. ¿Por qué hay anuncios?",
+                "section-2-content": "Utilizo Google AdMob para mostrar algunos anuncios. Soy un desarrollador independiente y estos anuncios son la pequeña ayuda que me permite mantener las aplicaciones gratuitas y seguir dedicando tiempo a mejorarlas para todos. AdMob puede usar identificadores anónimos de tu dispositivo para mostrarte publicidad que sea relevante para ti.",
+                "section-3-title": "3. Mejorando juntos (Analytics)",
+                "section-3-content": "A veces utilizo herramientas como Firebase para entender qué partes de la app funcionan bien y cuáles necesitan un poco más de cariño. Estos datos analíticos son totalmente anónimos y su único propósito es ayudarme a detectar errores y hacer que tu experiencia sea cada vez más fluida y útil.",
+                "section-4-title": "4. Evolución Constante",
+                "section-4-content": "Al igual que la tecnología, esta política puede cambiar de vez en cuando para adaptarse a nuevas mejoras o normativas. Siempre podrás consultar la versión más reciente aquí mismo.",
+                "section-5-title": "5. Hablemos",
+                "section-5-content": "Si tienes alguna duda o simplemente quieres decir hola, puedes contactarme directamente en: <a href='mailto:beluga-senior0b@icloud.com'>beluga-senior0b@icloud.com</a>. Soy un desarrollador independiente tratando de crear cosas útiles, y estaré encantado de escucharte."
+            },
+            en: {
+                "privacy-page-title": "Privacy Policy - Adiafos",
+                "privacy-title": "Privacy Policy",
+                "last-updated-text": "Last updated:",
+                "date": "April 23, 2026",
+                "section-1-title": "1. Data Transparency",
+                "section-1-content": "My philosophy is simple: your data is yours. My projects and applications are not designed to snoop into your private life. The data generated by using my tools is processed locally on your own device, ensuring your privacy stays with you.",
+                "section-2-title": "2. Why are there ads?",
+                "section-2-content": "I use Google AdMob to display some ads. I am an independent developer and these ads are the small help that allows me to keep the applications free and continue dedicating time to improving them for everyone. AdMob may use anonymous identifiers from your device to show you advertising that is relevant to you.",
+                "section-3-title": "3. Improving Together (Analytics)",
+                "section-3-content": "Sometimes I use tools like Firebase to understand which parts of the app work well and which ones need a little more love. This analytical data is completely anonymous and its only purpose is to help me detect errors and make your experience smoother and more useful.",
+                "section-4-title": "4. Constant Evolution",
+                "section-4-content": "Just like technology, this policy may change from time to time to adapt to new improvements or regulations. You can always check the latest version right here.",
+                "section-5-title": "5. Let's Talk",
+                "section-5-content": "If you have any questions or just want to say hi, you can contact me directly at: <a href='mailto:beluga-senior0b@icloud.com'>beluga-senior0b@icloud.com</a>. I'm an independent developer trying to create useful things, and I'll be happy to hear from you."
+            },
+            fr: {
+                "privacy-page-title": "Politique de Confidentialité - Adiafos",
+                "privacy-title": "Politique de Confidentialité",
+                "last-updated-text": "Dernière mise à jour :",
+                "date": "23 avril 2026",
+                "section-1-title": "1. Transparence des Données",
+                "section-1-content": "Ma philosophie est simple : vos données vous appartiennent. Mes projets et applications ne sont pas conçus pour s'immiscer dans votre vie privée. Les données générées par l'utilisation de mes outils sont traitées localement sur votre propre appareil.",
+                "section-2-title": "2. Pourquoi y a-t-il des publicités ?",
+                "section-2-content": "J'utilise Google AdMob pour afficher des publicités. Je suis un développeur indépendant et ces publicités sont la petite aide qui me permet de maintenir les applications gratuites et de continuer à les améliorer pour tous.",
+                "section-3-title": "3. S'améliorer ensemble (Analytics)",
+                "section-3-content": "J'utilise parfois des outils comme Firebase pour comprendre quelles parties de l'application fonctionnent bien. Ces données sont anonymes et servent uniquement à corriger des erreurs et à améliorer votre expérience.",
+                "section-4-title": "4. Évolution Constante",
+                "section-4-content": "Comme la technologie, cette politique peut changer pour s'adapter. Vous pourrez toujours consulter la version la plus récente ici.",
+                "section-5-title": "5. Parlons-en",
+                "section-5-content": "Si vous avez des questions, contactez-moi directement à : <a href='mailto:beluga-senior0b@icloud.com'>beluga-senior0b@icloud.com</a>. Je suis un développeur indépendant et je serai ravi de vous lire."
+            },
+            de: {
+                "privacy-page-title": "Datenschutzerklärung - Adiafos",
+                "privacy-title": "Datenschutzerklärung",
+                "last-updated-text": "Zuletzt aktualisiert:",
+                "date": "23. April 2026",
+                "section-1-title": "1. Datentransparenz",
+                "section-1-content": "Meine Philosophie ist einfach: Ihre Daten gehören Ihnen. Meine Projekte und Anwendungen sind nicht darauf ausgelegt, in Ihr Privatleben einzudringen. Die Daten werden lokal auf Ihrem Gerät verarbeitet.",
+                "section-2-title": "2. Warum gibt es Werbung?",
+                "section-2-content": "Ich nutze Google AdMob, um Werbung anzuzeigen. Als unabhängiger Entwickler hilft mir diese Werbung, die Apps kostenlos anzubieten und sie für alle weiter zu verbessern.",
+                "section-3-title": "3. Gemeinsam verbessern (Analytics)",
+                "section-3-content": "Ich nutze Tools wie Firebase, um zu verstehen, welche Teile der App gut funktionieren. Diese Daten sind anonym und helfen mir, Fehler zu finden und die App flüssiger zu machen.",
+                "section-4-title": "4. Ständige Weiterentwicklung",
+                "section-4-content": "Diese Richtlinie kann sich anpassen. Die neueste Version finden Sie immer hier.",
+                "section-5-title": "5. Kontakt",
+                "section-5-content": "Fragen? Schreiben Sie mir an: <a href='mailto:beluga-senior0b@icloud.com'>beluga-senior0b@icloud.com</a>. Ich bin ein unabhängiger Entwickler und freue mich auf Ihre Nachricht."
+            },
+            pt: {
+                "privacy-page-title": "Política de Privacidade - Adiafos",
+                "privacy-title": "Política de Privacidade",
+                "last-updated-text": "Última atualização:",
+                "date": "23 de abril de 2026",
+                "section-1-title": "1. Transparência de Dados",
+                "section-1-content": "A minha filosofia é simples: os teus dados são teus. Os meus projetos e aplicações não são feitos para invadir a tua privacidade. Tudo é processado localmente no teu dispositivo.",
+                "section-2-title": "2. Porquê anúncios?",
+                "section-2-content": "Uso o Google AdMob para mostrar anúncios. Sou um desenvolvedor independente e estes anúncios permitem-me manter as apps gratuitas e continuar a melhorá-las para todos.",
+                "section-3-title": "3. Melhorar juntos (Analytics)",
+                "section-3-content": "Uso ferramentas como o Firebase para detetar erros e melhorar a tua experiência. Estes dados são totalmente anónimos.",
+                "section-4-title": "4. Evolução Constante",
+                "section-4-content": "Esta política pode mudar para acompanhar melhorias. Podes consultar a versão mais recente aqui.",
+                "section-5-title": "5. Vamos falar",
+                "section-5-content": "Dúvidas? Contacta-me em: <a href='mailto:beluga-senior0b@icloud.com'>beluga-senior0b@icloud.com</a>. Sou um desenvolvedor independente e terei todo o gosto em ajudar."
+            },
+            it: {
+                "privacy-page-title": "Informativa sulla Privacy - Adiafos",
+                "privacy-title": "Informativa sulla Privacy",
+                "last-updated-text": "Ultimo aggiornamento:",
+                "date": "23 aprile 2026",
+                "section-1-title": "1. Trasparenza dei Dati",
+                "section-1-content": "La mia filosofia è semplice: i tuoi dati sono tuoi. I miei progetti e le mie applicazioni non sono progettati per curiosare nella tua vita privata. I dati sono elaborati localmente sul tuo dispositivo.",
+                "section-2-title": "2. Perché ci sono annunci?",
+                "section-2-content": "Uso Google AdMob per mostrare annunci. Sono uno sviluppatore indipendente e questi annunci mi permettono di mantenere le app gratuite e continuare a migliorarle per tutti.",
+                "section-3-title": "3. Migliorare insieme (Analytics)",
+                "section-3-content": "Uso strumenti come Firebase per capire come migliorare l'esperienza d'uso. Questi dati sono anonimi e servono solo a correggere errori.",
+                "section-4-title": "4. Evoluzione Costante",
+                "section-4-content": "Questa informativa può cambiare nel tempo. Troverai sempre l'ultima versione qui.",
+                "section-5-title": "5. Parliamo",
+                "section-5-content": "Domande? Scrivimi a: <a href='mailto:beluga-senior0b@icloud.com'>beluga-senior0b@icloud.com</a>. Sono uno sviluppatore indipendente e sarò felice di risponderti."
+            }
+        };
+
+        const langBtn = document.getElementById('langBtn');
+        const langDropdown = document.getElementById('langDropdown');
+        const currentLangText = document.getElementById('currentLang');
+        const langOptions = document.querySelectorAll('.lang-option');
+
+        function setLanguage(lang) {
+            const dictionary = translations[lang] || translations['en'];
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (dictionary[key]) {
+                    element.textContent = dictionary[key];
+                }
+            });
+
+            document.getElementById('contact-content').innerHTML = `<p>${dictionary["section-5-content"]}</p>`;
+
+            document.documentElement.lang = lang;
+            currentLangText.textContent = lang.toUpperCase();
+            
+            langOptions.forEach(opt => {
+                opt.classList.toggle('selected', opt.dataset.value === lang);
+            });
+            
+            localStorage.setItem('preferredLang', lang);
+            langDropdown.classList.remove('active');
+        }
+
+        langBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            langDropdown.classList.toggle('active');
+        });
+
+        document.addEventListener('click', () => {
+            langDropdown.classList.remove('active');
+        });
+
+        langOptions.forEach(option => {
+            option.addEventListener('click', () => {
+                setLanguage(option.dataset.value);
+            });
+        });
+
+        function initLanguage() {
+            const savedLang = localStorage.getItem('preferredLang');
+            const browserLang = navigator.language.split('-')[0];
+            const defaultLang = savedLang || (translations[browserLang] ? browserLang : 'en');
+            setLanguage(defaultLang);
+        }
+
+        window.addEventListener('DOMContentLoaded', initLanguage);
+    </script>
+</body>
+
+</html>
