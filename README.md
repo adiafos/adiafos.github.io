@@ -1,15 +1,18 @@
-# Adiafos Personal Portfolio
+# adiafos.github.io
 
-Mi rincón personal en GitHub. Una página minimalista y premium construida con HTML y CSS moderno.
+Mi sitio personal en GitHub Pages.
 
-## Características
-- **Diseño Premium**: Efectos de cristal (glassmorphism) y degradados dinámicos.
-- **Sin Dependencias**: Un único archivo HTML autónomo para máxima velocidad y facilidad de despliegue.
-- **Responsive**: Totalmente optimizado para móviles y escritorio.
-- **Iconos Modernos**: Usando Lucide Icons.
+## Sobre este proyecto
+Este es un portfolio sencillo construido con HTML y CSS. El objetivo es tener un lugar centralizado para mostrar mis proyectos y enlaces de contacto de forma limpia y organizada.
 
-## Cómo usar
-Simplemente abre `index.html` en cualquier navegador o súbelo a GitHub Pages para publicarlo al instante.
+## Lo que incluye
+- Diseño de una sola página.
+- Adaptable para móviles y ordenadores.
+- Soporte para varios idiomas (Español, Inglés, Francés, Alemán, Portugués e Italiano).
+- Página de política de privacidad integrada.
+
+## Uso
+Para ver el sitio, simplemente abre `index.html` en cualquier navegador o visita directamente [adiafos.github.io](https://adiafos.github.io).
 
 ## Licencia
 MIT
