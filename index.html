@@ -1,14 +1,304 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Adiafos | Personal Portfolio</title>
-    <meta name="description" content="Personal portfolio of Adiafos. Showcasing projects and several things." />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+    <meta name="description" content="Portfolio personal de Adiafos. Proyectos y tecnología.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #0f172a;
+            --bg-secondary: #1e293b;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #10b981;
+            --glass: rgba(30, 41, 59, 0.7);
+            --glass-border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Background Blobs */
+        .blob {
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.15;
+            animation: pulse 10s infinite alternate;
+        }
+
+        @keyframes pulse {
+            from { transform: translate(0, 0) scale(1); }
+            to { transform: translate(50px, 50px) scale(1.1); }
+        }
+
+        .blob-1 { background: var(--primary); top: -100px; right: -100px; }
+        .blob-2 { background: var(--accent); bottom: -100px; left: -100px; animation-delay: -5s; }
+
+        /* Hero */
+        header {
+            padding: 8rem 0 6rem;
+            text-align: center;
+        }
+
+        .hero-title {
+            font-size: clamp(3.5rem, 10vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 4vw, 1.5rem);
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 1.5rem;
+            padding: 2.5rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .tag-container {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            padding: 0.25rem 0.75rem;
+            background: rgba(99, 102, 241, 0.1);
+            color: #818cf8;
+            font-size: 0.75rem;
+            border-radius: 9999px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .project-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #818cf8;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .project-link:hover { color: #a5b4fc; }
+
+        /* Info Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .info-card {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .info-card i {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--glass-border);
+            padding: 3rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            color: var(--text-muted);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .social-links a:hover { color: #fff; }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 5rem 0 4rem; }
+            footer { justify-content: center; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <header>
+            <h1 class="hero-title">Adiafos</h1>
+            <p class="hero-subtitle">Desarrollador, creativo y entusiasta de la tecnología. Bienvenido a mi rincón personal.</p>
+        </header>
+
+        <!-- Projects Section -->
+        <section>
+            <div class="section-title">
+                <i data-lucide="code" class="text-primary"></i>
+                <h2>Proyectos</h2>
+            </div>
+            
+            <div class="grid">
+                <div class="glass-card">
+                    <div>
+                        <h3 style="margin-bottom: 0.75rem; font-size: 1.5rem;">Project Alpha</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Un proyecto increíble con enfoque en rendimiento y diseño minimalista.</p>
+                        <div class="tag-container">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JS</span>
+                        </div>
+                    </div>
+                    <a href="#" class="project-link">Ver Proyecto <i data-lucide="external-link" size="18"></i></a>
+                </div>
+
+                <div class="glass-card">
+                    <div>
+                        <h3 style="margin-bottom: 0.75rem; font-size: 1.5rem;">Project Beta</h3>
+                        <p style="color: var(--text-muted); margin-bottom: 1.5rem;">Experimentos con animaciones fluidas y micro-interacciones web.</p>
+                        <div class="tag-container">
+                            <span class="tag">UI/UX</span>
+                            <span class="tag">Animations</span>
+                        </div>
+                    </div>
+                    <a href="#" class="project-link">Ver Proyecto <i data-lucide="external-link" size="18"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Info Section -->
+        <section class="info-grid">
+            <div class="glass-card info-card">
+                <i data-lucide="terminal" size="32"></i>
+                <h4 style="margin-bottom: 0.5rem;">Clean Code</h4>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">Enfoque en código legible y fácil de mantener.</p>
+            </div>
+            <div class="glass-card info-card">
+                <i data-lucide="layers" size="32"></i>
+                <h4 style="margin-bottom: 0.5rem;">Modern UI</h4>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">Utilizando las últimas tendencias en diseño web.</p>
+            </div>
+            <div class="glass-card info-card">
+                <i data-lucide="github" size="32"></i>
+                <h4 style="margin-bottom: 0.5rem;">Open Source</h4>
+                <p style="font-size: 0.875rem; color: var(--text-muted);">Contribuyendo a la comunidad global.</p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Adiafos. Diseño Premium & Minimalista.</p>
+            <div class="social-links">
+                <a href="https://github.com/adiafos"><i data-lucide="github"></i></a>
+                <!-- El mail se puede poner directamente aquí o usar un script si prefieres ocultarlo -->
+                <a href="mailto:beluga-senior0b@icloud.com"><i data-lucide="mail"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
 </html>

@@ -1,30 +1,15 @@
 # Adiafos Personal Portfolio
 
-This is my personal portfolio website, built with React and Vite.
+Mi rincón personal en GitHub. Una página minimalista y premium construida con HTML y CSS moderno.
 
-## Tech Stack
-- **Framework**: React 18
-- **Build Tool**: Vite
-- **Animations**: Framer Motion
-- **Icons**: Lucide React
-- **Styling**: Vanilla CSS with a modern design system
+## Características
+- **Diseño Premium**: Efectos de cristal (glassmorphism) y degradados dinámicos.
+- **Sin Dependencias**: Un único archivo HTML autónomo para máxima velocidad y facilidad de despliegue.
+- **Responsive**: Totalmente optimizado para móviles y escritorio.
+- **Iconos Modernos**: Usando Lucide Icons.
 
-## Getting Started
+## Cómo usar
+Simplemente abre `index.html` en cualquier navegador o súbelo a GitHub Pages para publicarlo al instante.
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Run dev server:
-   ```bash
-   npm run dev
-   ```
-
-3. Build for production:
-   ```bash
-   npm run build
-   ```
-
-## License
+## Licencia
 MIT
